@@ -2,8 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 
+interface SquareProps {
+    onClick(): void;
+    value: 'X' | 'O' | null;
+}
 
-function Square(props) {
+const Square: React.FC<SquareProps> = props => {
     return (
       <button className="square" onClick={props.onClick}>
         {props.value}
