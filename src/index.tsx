@@ -62,20 +62,24 @@ const Game: React.FC = () => {
         }
     ]);
 
-handleClick(i) {
-    const history = this.state.history.slice(0, this.state.stepNumber + 1);
-    const current = history[history.length - 1];
+const handleClick = (i: number): void => {
+    const newHistory = history.slice(0, stepNumber + 1);
+    const current = newHistory[newHistory.length - 1];
     const squares = current.squares.slice();
     if (calculateWinner(squares) || squares[i]) {
-    return;
+        return;
     }
-    squares[i] = this.state.xIsNext ? "X" : "O";
-    this.setState({
-    history: history.concat([
+    squares[i] = xIsNext ? "X" : "O";
+    setHistory(newHistory.concat([
         {
-        squares: squares
+            squares: squares
         }
-    ]),
+    ]));
+    setStepNumber(newHistory.length);
+    setXIsNext(!xIsNext);
+
+    setState({
+    history: ,
     stepNumber: history.length,
     xIsNext: !this.state.xIsNext
     });
